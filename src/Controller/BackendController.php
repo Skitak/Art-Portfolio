@@ -214,7 +214,9 @@ class BackendController extends Controller
         $entityManager->persist($project);
         $entityManager->flush();
 
-        return new JsonResponse(["state" => "success", "message" => "Projet ajouté avec success."]);
+        $projectId = $this->getDoctrine()->getRepository(Project::class)->findOneByName($project->getName())->getId();
+
+        return $this->redirectToRoute("back_project", ["id" => $projectId]);
 
     }
 
