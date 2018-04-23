@@ -94,7 +94,7 @@ class PortfolioController extends Controller
             ->getForm();
         $form->handleRequest($request);
 
-        if ($request->isXmlHttpRequest()){
+        // if ($request->isXmlHttpRequest()){
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
                 $message = (new \Swift_Message('Hello Email'))
@@ -107,12 +107,12 @@ class PortfolioController extends Controller
                         ),
                         'text/html'
                     );
-                $mailer.send();
+                $mailer->send($message);
 
                 return new JsonResponse(["state" => "success", "message" => "Votre email a bien été envoyé."]);
             }
             return new JsonResponse(["state" => "error", "message" => (string)$form->getErrors(true)]);
-        }
+        // }
         return $this->render('front/contact.html.twig', [
             "formMessage" => $form->createView()
         ]);
