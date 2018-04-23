@@ -25,7 +25,8 @@ function setDragDropOrder(obj){
     obj.on("drop", swapProjectOrder) 
 }
 
-function swapProjectOrder(){
+function swapProjectOrder(event){
+    event.preventDefault()
     let copySelf = $(this).clone()
     let copyOther = draggedDiv.clone()
 
@@ -37,7 +38,7 @@ function swapProjectOrder(){
 
     $.ajax({
         url : window.location.origin + "/admin/project/swapOrder/" + idA + "/" + idB,
-        success: function (data) {console.log(data)},
+        // success: function (data) {console.log(data)},
         error: function (data, sdj, error) {alert(error)}
     })
 
