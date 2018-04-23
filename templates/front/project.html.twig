@@ -1,0 +1,9 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %} {{parent()}} -  {{project.name}} {% endblock %}
+
+{% block content %}
+
+{% include "/included/gallery.html.twig" with {"project" : project} %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <nav>
+        <div class="centered-box">
+            <a href="{{ path('portfolio_index') }}">Accueil</a>
+            <a href="{{ path('portfolio_gallery') }}">Galerie</a>
+            <a href="{{ path('portfolio_about') }}">A propos</a>
+            <a href="{{ path('portfolio_contact') }}">Contact</a>
+            {% if app.user %}
+            <a href="{{ path('back_index') }}">Admin</a>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %} {{ parent() }} {% endblock %}
+
+{% block footer %}   
+    <footer>
+        <div class="centered-box">
+            <p>© {{ "now"|date("Y")}} bastien-bouquin.com - Bastien Bouquin</p>
+            <div class="contact">
+                <div class="contact-infos">
+                    <h3><a href="{{ path('portfolio_contact') }}">Contact :</a></h3>
+                    <p>bas2205@live.fr</p>
+                    <p>06 05 47 99 17</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.artstation.com/skitak" ><img src="{{ asset('images/social/artstation.png') }}" alt="Artstation"/></a>
+                    <a href="https://skitak.deviantart.com/" ><img src="{{ asset('images/social/deviantart.png') }}" alt="Deviantart"/></a>
+                    <a href="https://www.pinterest.ca/bastienbouquin/" ><img src="{{ asset('images/social/pinterest.png') }}" alt="Pinterest"/></a>                    
+                    <a href="https://www.instagram.com/bastien.bouquin/" ><img src="{{ asset('images/social/instagram.png') }}" alt="Instagram"/></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+{% block javascripts %} {{ parent() }} {% endblock %}

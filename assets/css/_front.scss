@@ -1,0 +1,371 @@
+@import 'huebee/huebee';
+@import 'skeleton-css-webpack/css/skeleton';
+
+$project-height: 600px;
+$project-expand: 1200px;
+$project-break: 900px;
+
+.about-wrapper {    // start at /public/build/css
+    background-image: url("images/backgrounds/about.jpg");
+    width: 100%;
+    height: 750px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: 1920px 750px;
+    image-rendering: pixelated;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .about{
+        position: relative; 
+        background-color: white;
+        width: 450px;
+        padding: 50px;
+        right: -200px;
+        border-radius: 20px;
+
+        @media screen and (max-width : 1200px){
+            right: 0px;
+            padding: 10px;
+        }
+        h1 {
+            padding: 10px;
+            font-family: "Open Sans light";
+            font-weight: lighter;
+            color: rgb(24, 24, 24);
+        }
+
+        p {
+            width: 100%;
+            font-family: $secondary-font;
+            font-size: 14px;
+            white-space: pre-line;
+            hyphens: auto;
+        }
+
+    }
+
+    #about_form{
+        background-color: white;
+        padding: 50px;
+
+        #about_form_about {
+            width:350px;
+            height: 300px;
+            font-size: 14px;
+        }
+    }
+}
+
+.gallery{
+    header {
+        text-align: center;
+        h2{
+            font-family: "Lato";
+            font-size: 72px;
+            color: rgb(54, 54, 54);
+        }
+        p {
+            margin: 20px;
+            margin-bottom: 50px;
+            font-family: "Open sans light";
+            font-size: 36px;
+        }
+    }
+    .gallery-images {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: rgb(19, 19, 19);
+        
+        .invisible-container {
+            display: none;
+        }
+
+        .gallery-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgb(238, 238, 238);
+            padding: 20px 5px;
+            border-radius: 10px;
+            
+            a {
+                filter: brightness(100%);
+                transition: all .2s;
+            }
+
+            a:hover {
+                filter : brightness(110%);
+            }
+        }
+    }
+}
+
+.huebee__cursor {
+    width: 15px;
+    height: 15px;
+}
+
+.message-form-wrapper {
+    background-image: url("images/backgrounds/contact.jpg");
+    width: 100%;
+    height: 750px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: 1920px 750px;
+    image-rendering: pixelated;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+
+        left : 200px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .contact-infos {
+            align-self: flex-start;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            padding: 0px;
+
+            div {
+                padding: 20px;
+            }
+        }
+
+        textarea{
+            width: 350px;
+            height: 130px;
+        }
+
+        @media screen and (max-width : 1200px){
+            left: 0px;
+        }
+
+        @media screen and (max-width : 700px){
+            width : 90%;
+            left: 0px;
+
+            header div, div, button {
+                width : 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+
+            header {
+                width: 100%;
+                flex-direction: column;                
+            }
+
+            input, textarea {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 700px;
+
+    .form-login{
+        padding: 50px;
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 0px 5px rgb(61, 61, 61);
+    }
+}
+
+.project-wrapper {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+}
+.project{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px 0px;
+    // border: 1px black solid;
+    box-shadow: 0px 0px 5px grey;
+    transition: all .2s;
+    .image-wrapper {
+        height : $project-height;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-right : 1px rgb(180, 180, 180) solid;
+        border-left : 1px rgb(180, 180, 180) solid;
+        // background-color: black;
+        img {
+            transition: all .2s;
+            height: 100%;
+            filter: brightness(100%);
+            z-index: 1;
+        }
+
+        .background-blur{
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            filter:blur(15px); 
+            z-index: 0;
+        }
+    }
+    .project-infos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        .project-infos-centered {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: $project-height;
+            align-items: center;
+            padding: 50px 10px 100px 10px;
+            h1 {
+                color: rgb(43, 43, 43);
+                font-family: "IBM";
+                font-size: 60px;
+                text-align: center;
+                letter-spacing: 5px;
+            }
+
+            p {
+                margin-top: 30px;
+            }
+            .button {
+                width: 200px;
+                border: 2px solid black;
+                color : black;
+                font-family: "Open Sans";
+                border-radius: 0px;
+                transition: all .2s;
+            }
+        }
+    }
+    &:hover {
+        box-shadow: 0px 0px 10px rgb(49, 49, 49);
+        img {
+            filter: brightness(110%);
+        }
+    }
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    @media screen and (max-width: $project-expand)  {
+        width: 100%;
+        &:hover {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: $project-break)  {
+        &:nth-child(even) {
+            flex-direction: column;
+        }
+        flex-direction: column;
+        align-items: center;
+        .image-wrapper {
+            height: 400px;
+            img {
+                height: 100%;
+            }
+        }
+        .project-infos{
+            width: auto;
+            .project-infos-centered {
+                width: 100%;
+                padding : 40px 5px 20px 5px;
+                height: auto;
+                h1 {
+                    font-size: 42px;
+                    margin: 0px;
+                }
+            }
+        }
+    }
+}
+
+form {
+    .loading {
+        // background-color: orange;
+        color: white;
+        &::after{
+            content: " ";
+            position: absolute;
+            top: 8px;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            background-color: black;
+            animation: loading 1s cubic-bezier(0.94, 0.07, 0, 0.77) 0s infinite alternate;
+        }
+    }
+
+    .finished {
+        // background-color: green;
+        color:white;
+        &::after{
+            content: url("images/valid.png");
+            position: absolute;
+            bottom: 10px;
+            left: 45%;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            animation: appear 1s linear
+        }
+    }
+
+    .errorLoading {
+        color:white;
+        &::after{
+            content: url("images/error.png");
+            position: absolute;
+            bottom: 10px;
+            left: 45%;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            animation: appear 1s linear
+        }
+
+    }
+}

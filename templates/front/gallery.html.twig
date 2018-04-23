@@ -1,0 +1,14 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}{{ parent() }} - Galerie {% endblock %}
+
+{% block content %}
+
+<div class="gallery-wrapper">
+    {% for project in projects %}
+        {% include "/included/gallery.html.twig" with {"project" : project} %}
+    {% endfor %}
+</div>
+
+
+{% endblock %}

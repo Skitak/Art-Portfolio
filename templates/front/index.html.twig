@@ -1,0 +1,42 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block header %}
+{{ parent() }}
+    <div class="me-informations">
+        <h1> BASTIEN BOUQUIN </h1>
+        <h2> Concept Artist </h2>
+        <h2> Illustrateur Photographe </h2>
+    </div>
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<div class="project-wrapper">
+    {% for project in projects %}
+       <div class="project">
+            {% if project.frontArt is not empty %}
+            <div class="image-wrapper">
+                <img src="{{ asset('images/artwork/' ~ project.frontArt.image) }}"></img>
+                <img class="background-blur" src="{{ asset('images/artwork/' ~ project.frontArt.thumbnail) }}"></img>
+            </div>                                      
+            {% endif %}
+            <div class="project-infos">
+                <div class="project-infos-centered"> 
+                    <h1> {{ project.name }} </h1>
+                    <p> {{ project.description }} </p>
+                    <a class="button" href="{{path('portfolio_project', {'id' : project.id } )}}">
+                        visiter galerie 
+                     </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

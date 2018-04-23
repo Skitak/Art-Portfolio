@@ -1,0 +1,19 @@
+<div class="gallery">
+    <header class="gallery-header">
+        <h2> {{ project.name}} </h2>
+        <p> {{ project.description }} </p>
+    </header>
+    <div class="gallery-images">
+        <div class="invisible-container"></div>
+        <div class="gallery-column">
+            {% for artwork in project.artworks %}
+                <a href="{{ asset('images/artwork/' ~ artwork.image) }}">
+                    <img src="{{ asset('images/artwork/' ~ artwork.thumbnail) }} " alt="thumbnail artwork"/>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="gallery-column" style="display:none;"></div>
+        <div class="gallery-column" style="display:none;"></div>
+        <div class="gallery-column" style="display:none;"></div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}{{parent()}} - {{ project.name }}{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ asset('plugins/skeleton/huebee.css') }}">
+    {{parent()}}
+{% endblock %}
+
+{% block content %}
+
+<div class="back-wrapper">
+
+    <div class="project-edit">
+
+        {{ form_start(project_form) }}
+        {{ form_widget(project_form) }}
+        {{ form_end(project_form) }}
+
+        <div class="project">
+            <div class="image-wrapper">
+                {% if project.frontArt is not empty %}
+                    <img src="{{ asset('/images/artwork/' ~ project.frontArt.image) }}" alt="project image"></img>
+                    <img class="background-blur" src="{{ asset('/images/artwork/' ~ project.frontArt.thumbnail) }}" alt="background image effect"></img>
+                {% else %}
+                    <img src="http://placeholder.pics/svg/350x200" alt="project image"></img>
+                    <img class="background-blur" src="http://placeholder.pics/svg/350x200" alt="background image effect"></img>
+                {% endif %}
+            </div>
+            <div class="project-infos">
+                <div class="project-infos-centered"> 
+                    <h1> {{ project.name }} </h1>
+                    <p> {{ project.description }} </p>
+                    <a class="button" href="{{path('portfolio_project', {'id' : project.id } )}}">
+                        visiter galerie 
+                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-edit-gallery">
+
+        {{ form_start(artwork_form , {'name': 'artwork_form'}) }}
+        {{ form_widget(artwork_form) }}
+        {{ form_end(artwork_form) }}
+
+        <div class="gallery">
+            {% for artwork in project.artworks %}
+                <div class="artwork">
+                    <img src="{{ asset('images/artwork/' ~ artwork.thumbnail)  }}" />
+                    <div class="buttons">
+                        <a class="button button-primary front" href="{{ path('back_project_front_artwork', { 'id' : artwork.id }) }}" >Avant</a>
+                        <a class="button button-warning delete" href="{{ path('back_delete_artwork', {'id' : artwork.id }) }}">Supprimer</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

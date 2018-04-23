@@ -1,0 +1,8 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        artwork_images: "%kernel.project_dir%/public/images/artwork/full/"
+        artwork_thumbnail: "%kernel.project_dir%/public/images/artwork/thumbnail/"
+

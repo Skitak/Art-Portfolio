@@ -1,0 +1,14 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %} {{parent()}} -  A propos {% endblock %}
+
+{% block content %}
+
+<div class="about-wrapper">
+    <div class="about">
+        <h1>{{ title }}</h1>
+        <p>{{ about }}</p>
+    </div>
+</div>
+
+{% endblock %}

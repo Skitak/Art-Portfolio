@@ -1,0 +1,24 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %} {{parent()}} -  Contact {% endblock %}
+
+
+{% block content %}
+    <div class="message-form-wrapper">
+        {{ form_start(formMessage, {'name': 'mail_form'}) }}
+            <h2>Contact</h2>
+            <div class="contact-infos">
+                <p>Mail : bas2205@live.fr</p>
+                <p>Téléphone : 06 05 47 99 17</p>
+            </div>
+            {{ form_errors(formMessage) }}
+            <header>
+                {{ form_row(formMessage.nom) }}
+                {{ form_row(formMessage.email) }}
+            </header>
+            {{ form_row(formMessage.message) }}
+            {{ form_row(formMessage.envoyer) }}
+            
+        {{ form_end(formMessage) }}
+    </div>
+{% endblock %}
